@@ -1,0 +1,17 @@
+{
+    "name": "parap",
+    "description": "A web site containing a blog, chat hubs and some more...",
+    "version": "0.0.1",
+    "homepage": "",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+	"angular": "~1.4.0",
+	"angular-route": "~1.4.0",
+	"angular-ui-router": "latest",
+	"angular-loader": "~1.4.0",
+	"angular-mocks": "~1.4.0",
+	"html5-boilerplate": "~5.2.0",
+	"bootstrap-css": "latest"
+    }
+}
