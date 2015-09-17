@@ -17,20 +17,29 @@
 </head>
   <body ng-controller="ParapCtrl as parapctrl">
 
-    <nav class="navbar navbar-default">
-      <button type="button" class="btn btn-default" aria-label="Left Align" ui-sref="home.acceuil">
-	<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-      </button>
-      <button type="button" class="btn btn-default" aria-label="Left Align" ui-sref="patient">
-	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-      </button>
-
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+	<div class="navbar-header">
+	  <a class="navbar-brand" href="#">Parap!</a>
+	</div>
+	<button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="home.acceuil">
+	  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+	</button>
+	<button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="patient">
+	  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+	</button>
+	
+	<ul class="nav navbar-nav navbar-right">
+	  <li><a ui-sref="user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
+          <li><a ui-sref="user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a ui-sref="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	</ul>
+      </div>
     </nav>
 
     <!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-
     <div ui-view></div>
 
     <!-- In production use:
@@ -42,6 +51,9 @@
     <script src="components/home/home.js"></script>
     <script src="components/home/homeCtrl.js"></script>
     <script src="components/patient/patient.js"></script>
+    <script src="components/user/user.js"></script>
+    <script src="components/user/userCtrl.js"></script>
+    <script src="components/user/userService.js"></script>
     <script src="components/patient/patientCtrl.js"></script>
     <script src="components/patient/rest/createCtrl.js"></script>
     <script src="app.js"></script>

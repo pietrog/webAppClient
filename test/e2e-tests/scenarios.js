@@ -26,8 +26,7 @@ describe('parapp e2e tests', function() {
 	});
 
 	it ('should display information page when click informations', function(){
-	    browser.get('index.html');
-	    
+	    expect(element.all(by.css('div[id]')).first().getText()).toMatch(/acceuil/);
 	});
     });
     

@@ -3,7 +3,7 @@
     'use strict';
     
     // Declare app level module which depends on views, and components
-    angular.module('parap', ['ui.router', 'parap.home', 'parap.patient']);
+    angular.module('parap', ['ui.router', 'parap.home', 'parap.patient', 'parap.user']);
 
     angular.module('parap')
     	.config(config);
