@@ -11,8 +11,8 @@
 		get: function(){
 		    return $http.get('/users/list');
 		},
-		delete: function(id){
-		    //return $http
+		delete: function(name){
+		    return $http.delete('/users/user/' + name);
 		}
 	    }
 	});

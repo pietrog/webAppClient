@@ -35,14 +35,16 @@
 
     <div class="form-group">
       <label for="inputFname" class="sr-only">Email address</label>
-      <input type="text" id="inputFname" class="form-control input-lg" placeholder="Adresse e-mail" required="" autofocus="">
+      <input type="text" id="inputFname" class="form-control input-lg" placeholder="Adresse e-mail" required="" autofocus="" ng-model="userCtrl.credentials.name">
     </div>
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="userCtrl.credentials.password">
     </div>
-    <input class="btn btn-lg btn-primary btn-block" type="submit" id="submitbutton">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" id="submitbutton" ng-click="userCtrl.login()">
     
   </form>
+
+  {{userCtrl.result | json}}
 </div>
 

@@ -3,13 +3,17 @@
     'use strict';
     
     // Declare app level module which depends on views, and components
-    angular.module('parap', ['ui.router', 'parap.home', 'parap.patient', 'parap.user']);
+    angular.module('parap', ['ui.router', 'parap.home', 'parap.patient', 'parap.user', 'LocalStorageModule']);
 
     angular.module('parap')
     	.config(config);
+
+    //function authenticationInterceptor(
     
-    function config($stateProvider, $urlRouterProvider){
+    function config($stateProvider, $urlRouterProvider, $httpProvider, localStorageServiceProvider ){
 	$urlRouterProvider.otherwise("/home");
+	localStorageServiceProvider.setPrefix('parap');
+	localStorageServiceProvider.setStorageType('sessionStorage');
     }
 
 })();

@@ -21,6 +21,9 @@
   <div>
     Resultat :  {{userCtrl.result}}
   </div>
+
+  <div class="alert alert-success" ng-show="userCtrl.successAlert" class="ng-hide" role="alert">Utilisateur ajoute</div>
+  <div class="alert alert-danger"  ng-show="userCtrl.failedAlert" class="ng-hide" role="alert">Echec de l'ajout de l'utilisateur</div>
   
 </div> <!-- /container -->
 

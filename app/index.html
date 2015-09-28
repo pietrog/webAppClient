@@ -28,12 +28,14 @@
 	<button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="patient">
 	  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 	</button>
-	
+
 	<ul class="nav navbar-nav navbar-right">
 	  <li><a ui-sref="user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
-          <li><a ui-sref="user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a ui-sref="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  <li ng-show="parapctrl.isAuthenticated" ><a ui-sref="user-logout" ng-click="parapctrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout {{parapctrl.name}}</a></li>
 	</ul>
+
       </div>
     </nav>
 
@@ -42,22 +44,37 @@
 	<![endif]-->
     <div ui-view></div>
 
+    <div ng-show="parapctrl.errorMessage">{{parapctrl.errorMessage}}</div>
     <!-- In production use:
 	 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 	 -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
+    <script src="bower_components/js/angular-local-storage.js"></script>
+    
     <script src="components/home/home.js"></script>
-    <script src="components/home/homeCtrl.js"></script>
+    <script src="components/home/controllers/homeCtrl.js"></script>
+    <script src="components/home/config/homeConfig.js"></script>
+
     <script src="components/patient/patient.js"></script>
+
     <script src="components/user/user.js"></script>
-    <script src="components/user/userCtrl.js"></script>
-    <script src="components/user/userService.js"></script>
+    <script src="components/user/controllers/userCtrl.js"></script>
+    <script src="components/user/controllers/userLoginCtrl.js"></script>
+    <script src="components/user/services/userService.js"></script>
+    <script src="components/user/config/userConfig.js"></script>
+
+    <script src="components/test/service.js"></script>
+
+    <script src="components/authentication/authentication.js"></script>
+    <script src="components/authentication/services/authenticationService.js"></script>
+    
     <script src="components/patient/patientCtrl.js"></script>
     <script src="components/patient/rest/createCtrl.js"></script>
+
     <script src="app.js"></script>
     <script src="controller.js"></script>
+
     <script src="components/version/version.js"></script>
     <script src="components/version/version-directive.js"></script>
     <script src="components/version/interpolate-filter.js"></script>
