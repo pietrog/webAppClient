@@ -10,7 +10,7 @@
     function PatientCtrl($state){
 	var vm = this;
 
-	$state.go('patient.list');
+	$state.go('root.patient.list');
 
 	vm.list = [
 	    { "firstname" : "Pierre",

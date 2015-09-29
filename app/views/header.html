@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Parap!</a>
+    </div>
+    <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.home">
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.patient">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    </button>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a ui-sref="user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
+      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-show="parapctrl.isAuthenticated" ><a ui-sref="user-logout" ng-click="parapctrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout {{parapctrl.name}}</a></li>
+    </ul>
+    
+  </div>
+</nav>

@@ -14,6 +14,16 @@
 	$urlRouterProvider.otherwise("/home");
 	localStorageServiceProvider.setPrefix('parap');
 	localStorageServiceProvider.setStorageType('sessionStorage');
+
+	$stateProvider
+	    .state('root', {
+		url: '',
+		abstract: true,
+		views: {
+		    "header": { templateUrl: "views/header.html" },
+		    "footer": { templateUrl: "views/footer.html" }
+		}
+	    });
     }
 
 })();

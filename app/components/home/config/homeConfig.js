@@ -6,20 +6,22 @@
     
     function Config($stateProvider){
 	$stateProvider
-	    .state('home', {
+	    .state('root.home', {
 		url: "/home",
-		templateUrl: "components/home/home.html"
+		views: {
+		    "main@" : { templateUrl: "components/home/home.html" }
+		}
 	    })
-	    .state('home.acceuil', {
+	    .state('root.home.acceuil', {
 		url: "/accueil",
-		templateUrl: "components/home/accueil.html"
+		templateUrl: "components/home/views/accueil.html" 
 	    })
-	    .state("home.informations", {
+	    .state("root.home.informations", {
 		url: "/informations",
-		templateUrl: "components/home/informations.html",
+		templateUrl: "components/home/views/informations.html",
 		controller: "HomeCtrl",
 		controllerAs: "ctrl"
 	    });
     };
-
+    
 })();
