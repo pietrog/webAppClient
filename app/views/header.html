@@ -11,9 +11,9 @@
     </button>
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a ui-sref="user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
-      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a ui-sref="root.user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
+      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="root.user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="root.user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       <li ng-show="parapctrl.isAuthenticated" ><a ui-sref="user-logout" ng-click="parapctrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout {{parapctrl.name}}</a></li>
     </ul>
     
