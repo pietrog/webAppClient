@@ -20,11 +20,17 @@
     <!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-    
-    
+
     <div ui-view="header"></div>
-    <div ui-view="main"></div>
-    <div ui-view="footer"></div>
+
+    <div class="container clearfix">
+      <aside ui-view="infobar"></aside>
+      <section class="pull-left">
+	<div ui-view="main"></div>
+	<div ui-view="footer"></div>
+      </section>
+
+    </div>
     
     <!-- In production use:
 	 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -41,6 +47,7 @@
     <script src="components/patient/config/patientConfig.js"></script>
     <script src="components/patient/controllers/patientCtrl.js"></script>
     <script src="components/patient/controllers/createCtrl.js"></script>
+    <script src="components/patient/services/patientService.js"></script>
 
     <script src="components/user/user.js"></script>
     <script src="components/user/controllers/userCtrl.js"></script>

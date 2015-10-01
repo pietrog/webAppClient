@@ -1,11 +1,20 @@
 <div class="container">
-  Liste de tous les patients !!!
+
 
   <div class="well">
     <ul class="list-group">
-      <li class="list-group-item" ng-repeat="item in patientCtrl.list">
+      <li class="list-group-item" ng-repeat="item in patientCtrl.patients">
 	<span>{{item.firstname}}</span>
-	<p>{{item.lastname}}</p>
+	<span>{{item.lastname}}</span>
+	<span>{{item.email}}</span>
+	<span>{{item.adress}}</span>
+	<span>{{item.phone}}</span>
+	<span>{{item.birthday}}</span>
+	<div class="checkbox">
+	  <label>
+	    <input type="checkbox" ng-click="patientCtrl.deletePatient(item._id)">
+	  </label>
+	</div>
       </li>
     </ul>
   </div>

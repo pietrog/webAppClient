@@ -9,6 +9,7 @@
     function ParapCtrl($rootScope, $state, $window, localStorageService, AuthenticationFactory){
 	var vm = this;
 	vm.errorMessage;
+	vm.infos = {};
 	//vm.logout = AuthenticationFactory.logout();
 	vm.logout = function(){
 	    if (vm.isAuthenticated)
@@ -25,6 +26,9 @@
 	    vm.isAuthenticated = false;
 	});
 
+	$rootScope.$on('information', function(event, arg){
+	    vm.infos = { name: arg }
+	});
 	
 
 	if (!localStorageService.isSupported){

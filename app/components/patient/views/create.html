@@ -1,4 +1,4 @@
-<div>
+<div class="container">
 
   <h3>Creation d'une fiche patient <span class="label label-default">Taintain !!</span></h3>
   
@@ -6,25 +6,30 @@
     
     <div class="form-group">
       <span class="input-group-addon" id="basic-addon1">Prenom</span>
-      <input type="text" class="form-control" placeholder="{{ctrl.firstname}}" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="Prénom" aria-describedby="basic-addon1" ng-model="ctrl.patient.firstname">
     </div>
     
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon1">Nom</span>
-      <input type="text" class="form-control" placeholder="{{ctrl.lastname}}" aria-describedby="basic-addon1">
-    </div>
-    
-    <div class="form-group">
-      <span class="input-group-addon" id="basic-addon2">Adresse</span>
-      <input type="text" class="form-control" placeholder="{{ctrl.address}}" aria-describedby="basic-addon1">
-    </div>
-    
-    <div class="form-group">
-      <span class="input-group-addon" id="basic-addon2">Numero de telephone</span>
-      <input type="tel" class="form-control" placeholder="{{ctrl.phone}}" aria-describedby="basic-addon1">
+      <span class="input-group-addon" id="basic-addon1">Nom de famille</span>
+      <input type="text" class="form-control" placeholder="Nom de famille" aria-describedby="basic-addon1" ng-model="ctrl.patient.lastname">
     </div>
 
-    <button type="button" class="btn btn-primary">Enregistrer</button>
+    <div class="form-group">
+      <span class="input-group-addon" id="basic-addon1">E-mail</span>
+      <input type="text" class="form-control" placeholder="E-mail" aria-describedby="basic-addon1" ng-model="ctrl.patient.email">
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="basic-addon2">Adresse</span>
+      <input type="text" class="form-control" placeholder="Adresse" aria-describedby="basic-addon1" ng-model="ctrl.patient.address">
+    </div>
+    
+    <div class="form-group">
+      <span class="input-group-addon" id="basic-addon2">Numéro de telephone</span>
+      <input type="tel" class="form-control" placeholder="Numéro de téléphone" aria-describedby="basic-addon1" ng-model="ctrl.patient.phone">
+    </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="ctrl.createPatient()">Enregistrer</button>
     <button type="button" class="btn btn-danger">Tout effacer</button>
     
   </form>
