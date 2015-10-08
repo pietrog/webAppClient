@@ -1,4 +1,11 @@
-<div class="infobar">
-  {{ctrl.infos}}
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand" >
+      Infos
+    </li>
+    <li ng-repeat="item in ctrl.infos" >
+      <div ng-class="item.class" role="alert">{{item.event}}</div>
+    </li>
+
+  </ul>
 </div>
-    

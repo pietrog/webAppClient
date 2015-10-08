@@ -9,19 +9,25 @@
     function CreatePatientCtrl($rootScope, PatientFactory){
 	var vm = this;
 
-	vm.patient = {};
+
+	vm.patient = {
+	};
 
 	vm.createPatient = function(){
 	    if (vm.patient.firstname){
-		PatientFactory.create(vm.patient).then(function(response){
-		    $rootScope.$broadcast('information', 'Patient créé.');
-		})
+		PatientFactory.create(vm.patient).then(
+		    function(response){
+			$rootScope.$broadcast('information', 'Patient ' + response.success + ' créé.');
+		    },
+		    function(err){
+			$rootScope.$broadcast('error', 'Echec de la création du patient: ' + err.data);
+		    })
 	    }
 	}
-	vm.firstname = "Prenom";
-	vm.lastname = "Nom de famille";
-	vm.address = "Adresse";
-	vm.phone = "Téléphone";
+
+	vm.cleanForm = function(){
+	    vm.patient = {};
+	}
     }
 
 })();

@@ -1,38 +1,116 @@
 <div class="container">
 
-  <h3>Creation d'une fiche patient <span class="label label-default">Taintain !!</span></h3>
+  <h3>Creation d'une fiche patient</h3>
   
-  <form >
-    
+  <form name="myform" class="my-form">
+
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon1">Prenom</span>
-      <input type="text" class="form-control" placeholder="Prénom" aria-describedby="basic-addon1" ng-model="ctrl.patient.firstname">
+      
+      <span class="input-group-addon" id="patient.firstname">Prenom</span>
+      <input type="text"
+	     class="form-control"
+	     placeholder="Prénom"
+	     aria-describedby="patient.firstname"
+	     ng-model="ctrl.patient.firstname"
+	     ng-maxlength="100"
+	     name="firstname"
+	     required></input>
+      <div class="containerror" ng-show="myform.firstname.$dirty && myform.firstname.$invalid">
+	<small class="error-form" ng-show="myform.firstname.$error.required">Prénom requis</small>
+	<small class="error-form" ng-show="myform.firstname.$error.maxlength">100 lettres maximum pour un prénom</small>
+      </div>
     </div>
     
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon1">Nom de famille</span>
-      <input type="text" class="form-control" placeholder="Nom de famille" aria-describedby="basic-addon1" ng-model="ctrl.patient.lastname">
+      
+      <span class="input-group-addon" id="patient.lastname">Nom de famille</span>
+      <input type="text"
+	     class="form-control"
+	     placeholder="Nom de famille"
+	     aria-describedby="patient.lastname"
+	     ng-maxlength="50"
+	     name="lastname"
+	     required
+	     ng-model="ctrl.patient.lastname"></input>
+      <div class="containerror" ng-show="myform.lastname.$dirty && myform.lastname.$invalid">
+	<small class="error-form" ng-show="myform.lastname.$error.required">Nom de famille requis</small>
+	<small class="error-form" ng-show="myform.lastname.$error.maxlength">100 lettres maximum pour un nom de famille</small>
+      </div>
+      
     </div>
 
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon1">E-mail</span>
-      <input type="text" class="form-control" placeholder="E-mail" aria-describedby="basic-addon1" ng-model="ctrl.patient.email">
+      
+      <span class="input-group-addon" id="patient.birthday">Date de naissance</span>
+      <input type="date"
+	     class="form-control"
+	     placeholder="dd-MM-yyy"
+	     aria-describedby="patient.birthday"
+	     name="birthday"
+	     required
+	     ng-model="ctrl.patient.birthday"></input>
+      
     </div>
 
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon2">Adresse</span>
-      <input type="text" class="form-control" placeholder="Adresse" aria-describedby="basic-addon1" ng-model="ctrl.patient.address">
+      <span class="input-group-addon" id="patient.email">E-mail</span>
+      <input type="email"
+	     class="form-control"
+	     placeholder="E-mail"
+	     aria-describedby="patient.email"
+	     ng-minlength="3"
+	     ng-maxlength="50"
+	     name="email"
+	     ng-model="ctrl.patient.email"></input>
+      <div class="containerror" ng-show="myform.email.$dirty && myform.email.$invalid">
+	<small class="error-form" ng-show="myform.email.$error.minlength || myform.email.$error.maxlength">E-mail invalide</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.address">Adresse</span>
+      <input type="text"
+	     class="form-control"
+	     placeholder="Adresse"
+	     aria-describedby="patient.address"
+	     ng-minlength="5"
+	     ng-maxlength="200"
+	     name="address"
+	     ng-model="ctrl.patient.address"></input>
+      <div class="containerror" ng-show="myform.address.$dirty && myform.address.$invalid">
+	<small class="error-form" ng-show="myform.address.$error.minlength || myform.address.$error.maxlength">Adresse invalide(entre 5 et 200 lettres)</small>
+      </div>
     </div>
     
     <div class="form-group">
-      <span class="input-group-addon" id="basic-addon2">Numéro de telephone</span>
-      <input type="tel" class="form-control" placeholder="Numéro de téléphone" aria-describedby="basic-addon1" ng-model="ctrl.patient.phone">
+      <span class="input-group-addon" id="patient.phone">Numéro de telephone</span>
+      <input type="tel"
+	     class="form-control"
+	     placeholder="Numéro de téléphone"
+	     aria-describedby="patient.phone"
+	     ng-minlength="5"
+	     ng-maxlength="20"
+	     name="phone"
+	     ng-model="ctrl.patient.phone"></input>
+      <div class="containerror" ng-show="myform.phone.$dirty && myform.phone.$invalid">
+	<small class="error-form" ng-show="myform.phone.$error.minlength || myform.phone.$error.maxlength">Numéro invalide</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.notes">Notes</span>
+      <textarea type="text"
+		class="form-control"
+		placeholder="Description du patient (facultative)"
+		aria-describedby="patient.notes"
+		rows="7"
+		ng-model="ctrl.patient.notes"></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary" ng-click="ctrl.createPatient()">Enregistrer</button>
-    <button type="button" class="btn btn-danger">Tout effacer</button>
-    
+    <button type="button" class="btn btn-danger" ng-click="ctrl.cleanForm()">Tout effacer</button>    
   </form>
+
 
 
 </div>

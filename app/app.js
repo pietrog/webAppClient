@@ -15,6 +15,8 @@
 	localStorageServiceProvider.setPrefix('parap');
 	localStorageServiceProvider.setStorageType('sessionStorage');
 
+	$httpProvider.interceptors.push('AuthenticationInterceptorFactory');
+
 	$stateProvider
 	    .state('root', {
 		url: '',

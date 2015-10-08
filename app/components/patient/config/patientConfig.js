@@ -4,6 +4,8 @@
     angular.module('parap.patient')
 	.config(PatientConfig);
 
+    
+
     function PatientConfig($stateProvider){
 	$stateProvider
 	    .state('root.patient', {
@@ -25,8 +27,23 @@
 		url: "/list",
 		templateUrl: "components/patient/views/list.html",
 		controller: "PatientCtrl",
-		controllerAs: "patientCtrl"		
+		controllerAs: "patientCtrl",
+		//resolve: checkIsConnected
 	    });
     }
+
+
+    function checkIsConnected($q, $location){
+	var defered = $q.defer();
+	
+	if (false){
+	    defered.reject("no access");
+	    $location.url('/home');
+	}
+	else{
+	    defered.resolve("access granted !");
+	}
+    }
+    
 
 })();

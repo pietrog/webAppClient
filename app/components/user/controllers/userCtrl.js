@@ -4,12 +4,11 @@
     angular.module('parap.user')
 	.controller('UserCtrl', UserCtrl);
 
-    function UserCtrl(User, testService){
+    function UserCtrl($rootScope, User, testService){
 	var vm = this;
 
 	vm.compteur = testService.getCpt();
 	
-	vm.result = {};
 	vm.users = {};
 	vm.userData = {};
 	    
@@ -23,11 +22,10 @@
 	    if (vm.userData.name){
 		User.create(vm.userData).then(
 		    function(response){
-			vm.result = response.data;
-			vm.successAlert = "Ajuote";
+			$rootScope.$broadcast('information', 'Utilisateur ajouté');
 		    },
 		    function(response){
-			vm.failedAlert = "Echec";
+			$rootScope.$broadcast('error', 'Echec de l\'ajout de l\'utilisateur: '+ response.data.data);
 		    });
 	    }
 	       
@@ -38,9 +36,11 @@
 		User.delete(name).then(
 		    function(response){
 			vm.users = response.data;
+			$rootScope.$broadcast('information', 'Utilisateur supprimé'+response.data);
 		    },
 		    function(response){
 			vm.result = response.data;
+			$rootScope.$broadcast('error', 'Echec de suppression: '+response.data);
 		    });
 	    }
 	};

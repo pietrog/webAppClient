@@ -1,7 +1,6 @@
 <div class="container">
 
-
-  <div class="well">
+  <div class="well" ng-show="patientCtrl.patients[0]">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="item in patientCtrl.patients">
 	<span>{{item.firstname}}</span>
@@ -17,6 +16,11 @@
 	</div>
       </li>
     </ul>
+  </div>
+
+  <div class="well" ng-show="!patientCtrl.patients[0]">
+    Ressource destinée aux practiciens.
+    <a ui-sref="root.user-login">Veuillez vous authentifier</a>
   </div>
   
 </div>

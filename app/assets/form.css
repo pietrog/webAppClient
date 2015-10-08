@@ -1,0 +1,20 @@
+input.ng-invalid {
+    transition:all linear 0.5s;
+    border: 1px solid red;
+    box-shadow: -1px 1px 3px 2px rgba(200, 0, 0, 0.3)
+}
+input.ng-valid {
+    transition:all linear 0.5s;
+    border: 1px solid green;
+
+}
+
+.my-form {
+   transition:all linear 0.5s;
+   background: transparent;
+}
+
+.error-form{
+    background-color: red;
+    color: white;
+}
