@@ -6,15 +6,31 @@
     <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.home">
       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
     </button>
-    <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.patient">
-      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <button type="button"
+	    class="btn navbar-btn btn-default"
+	    aria-label="Left Align"
+	    ui-sref="root.patient"
+	    ng-show="parapctrl.checkModuleAccess('patient')"
+	    >
+      <span class="glyphicon " aria-hidden="true">Module de base</span>
     </button>
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a ui-sref="root.user-list"><span class="glyphicon glyphicon-th-large"></span> List Users</a></li>
-      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="root.user-signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li ng-show="!parapctrl.isAuthenticated"><a ui-sref="root.user-login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      <li ng-show="parapctrl.isAuthenticated" ><a ui-sref="user-logout" ng-click="parapctrl.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout {{parapctrl.name}}</a></li>
+      <li>
+	<a ui-sref="root.adminConsole.active">
+	  <span class="glyphicon glyphicon-th-large">-Console Admin </span> 
+	</a>
+      </li>
+      <li ng-show="!parapctrl.isAuthenticated">
+	<a ui-sref="root.login">
+	  <span class="glyphicon glyphicon-log-in">-Login</span> 
+	</a>
+      </li>
+      <li ng-show="parapctrl.isAuthenticated" >
+	<a ui-sref="root.logout" ng-click="parapctrl.logout()">
+	  <span class="glyphicon glyphicon-log-out">Logout {{parapctrl.name}}</span> 
+	</a>
+      </li>
     </ul>
     
   </div>

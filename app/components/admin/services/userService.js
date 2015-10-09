@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('parap.user')
+    angular.module('AdminConsole')
 	.factory('User', function($http){
 	    return{
 		create: function(data){
@@ -11,8 +11,8 @@
 		get: function(){
 		    return $http.get('/users/list');
 		},
-		delete: function(name){
-		    return $http.delete('/users/user/' + name);
+		delete: function(id){
+		    return $http.delete('/users/user/' + id);
 		}
 	    }
 	});

@@ -5,7 +5,7 @@
     angular.module('pietro.authentication')
 	.factory('UserAuthFactory', UserAuthFactory);
 
-    function UserAuthFactory($q, $location, USER_AUTH, localStorageService){
+    function UserAuthFactory($q, $location, USER_AUTH_CST, localStorageService){
 
 	var UserAuth = {
 	    isAuthenticated: false,
@@ -16,13 +16,13 @@
 	return UserAuth;
 
 	function getToken(){
-	    return localStorageService.get(USER_AUTH.token);
+	    return localStorageService.get(USER_AUTH_CST.token);
 	}
 	
 	function checkIsConnected(){
 	    var defered = $q.defer();
 	    
-	    var token = localStorageService.get(USER_AUTH.token);
+	    var token = localStorageService.get(USER_AUTH_CST.token);
 
 	    if (!token){
 		defered.reject("no access");

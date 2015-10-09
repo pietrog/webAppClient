@@ -8,16 +8,11 @@
 
     //HomeCtrl.$inject = ['$state', 'testService'];
 
-    function HomeCtrl($state, $http, User, testService){
+    function HomeCtrl(){
 	var vm = this;
-
+	
 	//$state.go('home.acceuil');
-	vm.compteur = testService.getCpt();
-	//vm compteurTR = testService.cpt;
-	vm.incr = function(){
-	    testService.incrCpt();
-	};
-
-	}
+	
+    }
 	
 })();

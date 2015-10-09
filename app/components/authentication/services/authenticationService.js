@@ -5,13 +5,13 @@
 	.factory('AuthenticationFactory', AuthenticateWithToken);
 
 
-    function AuthenticateWithToken($rootScope, $http, $q, $location, localStorageService, USER_AUTH){
+    function AuthenticateWithToken($rootScope, $http, $q, $location, localStorageService,
+				   USER_AUTH_CST,
+				   MESSAGES_AUTH_CST){
 
 	var authenticationService = {
-	    user: {},
 	    login: login,
 	    logout: logout,
-	    
 	};
 	
 	return authenticationService;
@@ -25,17 +25,23 @@
 
 		    //if successful, store the token
 		    if (res.status == 200){
-			localStorageService.set(USER_AUTH.token, res.data.token);
-			localStorageService.set(USER_AUTH.userName, credentials.name);
-			$rootScope.$broadcast('authenticationSuccess', credentials.name);
+			var userData = {
+			    name: credentials.login,
+			    //profil: res.data.profil,
+			    profil: { module: ["patient"] },
+			    lastAccess: res.data.lastAccess
+			};
+			localStorageService.set(USER_AUTH_CST.token, res.data.token);
+			localStorageService.set(USER_AUTH_CST.userData, userData);
+			$rootScope.$broadcast(MESSAGES_AUTH_CST.authSuccess, userData);
 		    }
 		    return res;
 		})
 	};
 	
 	function logout(){
-	    localStorageService.remove(USER_AUTH.token);
-	    localStorageService.remove(USER_AUTH.name);
+	    localStorageService.remove(USER_AUTH_CST.token);
+	    localStorageService.remove(USER_AUTH_CST.userData);
 	    $rootScope.$broadcast('deauthenticationSuccess', "yeessss");
 	};
 

@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('parap.user')
+    angular.module('pietro.authentication')
 	.controller('UserLoginCtrl', UserLoginCtrl);
 
     //UserLoginCtrl.$inject = ['AuthenticationFactory'];

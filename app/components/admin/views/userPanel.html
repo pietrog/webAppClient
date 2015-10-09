@@ -1,0 +1,90 @@
+<!-- Panel for user creation -->
+<div class="col-md-3">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Ajouter un praticien
+    </div>
+    <div class="panel-body">
+
+      <form role="form">
+
+	<div class="form-group">
+	  <label for="inputFname" class="control-label">Login</label>
+	  <input type="text"
+		 id="inputFname"
+		 class="form-control"
+		 placeholder="Login"
+		 required=""
+		 autofocus=""
+		 ng-model="userCtrl.userData.login">
+	</div>
+
+	<div class="form-group">
+	  <label for="inputPassword" class="control-label">Password</label>
+	  <input type="password"
+		 id="inputPassword"
+		 class="form-control"
+		 placeholder="Password"
+		 ng-model="userCtrl.userData.password">
+	</div>
+
+	<div class="form-group">
+	  <label for="inputConfirmPassword" class="control-label">Password Confirmation</label>
+	  <input type="password"
+		 id="inputConfirmPassword"
+		 class="form-control"
+		 placeholder="Password Confirmation">
+	</div>
+	
+	<button class="btn btn-lg btn-primary " type="submit" ng-click="userCtrl.createUser()">
+	  Creer le praticien
+	</button>
+	
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Panel for user list -->
+<div class="col-md-9">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      Liste des praticiens
+    </div>
+    <div class="panel-body">
+
+      <table class="table table-condensed">
+	<thead>
+	  <tr>
+	    <th>Nom</th>
+	    <th>E-mail</th>
+	    <th ng-repeat="item in userPanelCtrl.listModules">Module {{item.name}}</th>
+	    <th>Supprimer</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr ng-repeat="user in userPanelCtrl.users">
+	    <td>
+	      <h4 class="list-group-item-heading">{{user.login}}</h4>
+	    </td>
+	    <td>mail</td>
+	    <td ng-repeat="item in userPanelCtrl.listModules">
+	      <input type="checkbox" ng-model="userPanelCtrl.selection[user.login + item.name]" ng-change="userPanelCtrl.changeModule(user.login, item.name)">
+	    </td>
+	    <td>
+	      <a type="checkbox" class="btn glyphicon glyphicon-remove"
+		 ng-click="userPanelCtrl.deleteUser(user._id)">
+	      </a>
+	    </td>
+	    
+	  </tr>
+	</tbody>
+      </table>
+
+    </div>
+    
+  </div>
+</div>
+
+{{userPanelCtrl.result}}
+

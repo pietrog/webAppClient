@@ -29,22 +29,22 @@
   </div>
 </div-->
 
-<div class="modal-dialog">
+<div class="modal-dialog" >
   <form class="form-signin ">
     <h2 class="form-signin-heading">Sign In</h2>
 
     <div class="form-group">
       <label for="inputFname" class="sr-only">Email address</label>
-      <input type="text" id="inputFname" class="form-control input-lg" placeholder="Adresse e-mail" required="" autofocus="" ng-model="userCtrl.credentials.name">
+      <input type="text" id="inputFname" class="form-control input-lg" placeholder="Adresse e-mail" required="" autofocus="" ng-model="loginCtrl.credentials.name">
     </div>
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="userCtrl.credentials.password">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="loginCtrl.credentials.password">
     </div>
-    <input class="btn btn-lg btn-primary btn-block" type="submit" id="submitbutton" ng-click="userCtrl.login()">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" id="submitbutton" ng-click="loginCtrl.login()">
     
   </form>
 
-  {{userCtrl.result | json}}
+  {{userCtrl.result.data | json}}
 </div>
 
