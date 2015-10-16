@@ -58,7 +58,7 @@
 	  <tr>
 	    <th>Nom</th>
 	    <th>E-mail</th>
-	    <th ng-repeat="item in userPanelCtrl.listModules">Module {{item.name}}</th>
+	    <th>Modules</th>
 	    <th>Supprimer</th>
 	  </tr>
 	</thead>
@@ -68,8 +68,19 @@
 	      <h4 class="list-group-item-heading">{{user.login}}</h4>
 	    </td>
 	    <td>mail</td>
-	    <td ng-repeat="item in userPanelCtrl.listModules">
-	      <input type="checkbox" ng-model="userPanelCtrl.selection[user.login + item.name]" ng-change="userPanelCtrl.changeModule(user.login, item.name)">
+	    <td>
+	      <span ng-repeat="item in user.profile.module" class="label label-default">
+		{{item.name}}
+		<a type="checkbox" class="btn glyphicon glyphicon-remove" ng-click="userPanelCtrl.removeModule(user.login, item.name)"></a>
+	      </span>
+	      <div class="btn-group">
+		<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  Ajouter <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+		  <li ng-repeat="mod in userPanelCtrl.listModules" ><a href="" ng-click="userPanelCtrl.addModuleToUser(user._id, mod.name)">{{mod.name}}</a></li>
+		</ul>
+	      </div>
 	    </td>
 	    <td>
 	      <a type="checkbox" class="btn glyphicon glyphicon-remove"

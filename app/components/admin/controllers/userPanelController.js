@@ -59,7 +59,15 @@
 	vm.changeModule = function(userlogin, moduleName){
 	    vm.result = userlogin + ' - ' + moduleName;
 	}
-	
+
+	vm.addModuleToUser = addModToUser;
+
+
+	function addModToUser(userID, modName){
+	    //first send the action to the server
+	    User.addModToUser(userID, modName);
+	    vm.result = userID + " -- " + modName;
+	}
     }
     
 })();
