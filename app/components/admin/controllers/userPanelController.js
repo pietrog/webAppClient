@@ -15,7 +15,7 @@
 	User.get().then(
 	    function(response){
 		vm.users = response.data;
-		//vm.result = response;
+		vm.result = response.data;
 	    });
 
 	ModuleFactory.get().then(function(response){
@@ -23,6 +23,7 @@
 	});
 	
 	vm.createUser = function(){
+	    vm.result = "ok"
 	    if (vm.userData.login){
 		vm.userData.profile = { type: "praticien" };
 		User.create(vm.userData).then(
@@ -60,14 +61,42 @@
 	    vm.result = userlogin + ' - ' + moduleName;
 	}
 
-	vm.addModuleToUser = addModToUser;
-
-
-	function addModToUser(userID, modName){
+	vm.addModuleToUser = function(userID, modName){
 	    //first send the action to the server
-	    User.addModToUser(userID, modName);
-	    vm.result = userID + " -- " + modName;
+	    User.addModuleToUser(userID, modName)
+		.then(function(res){
+		    if (res.data.success)
+			vm.users[userID].profile.module.push({name: modName});
+		    else
+			vm.result = "failure...";
+		});
 	}
+
+	vm.removeModuleFromUser = function(userID, modName){
+	    User.deleteModuleFromUser(userID, modName).then(
+		function(res){
+		    if (res.data.success){
+			/******************/
+			//@TODO optimize it: remove the module if we find it
+
+			var pos = 0;			
+			vm.users[userID].profile.module.forEach(function(curr, idx, arr){
+			    if (curr.name == modName) {
+				pos = idx;
+				return;
+			    }
+			})
+			vm.users[userID].profile.module.splice(pos, 1);
+			/******************/
+								
+			vm.result = "SUCCESS !! ";
+		    }
+		    else
+			vm.result = res.data.success;
+		}
+	    )
+	}
+
     }
     
 })();

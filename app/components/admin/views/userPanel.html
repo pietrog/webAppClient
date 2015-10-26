@@ -16,7 +16,7 @@
 		 placeholder="Login"
 		 required=""
 		 autofocus=""
-		 ng-model="userCtrl.userData.login">
+		 ng-model="userPanelCtrl.userData.login">
 	</div>
 
 	<div class="form-group">
@@ -25,7 +25,7 @@
 		 id="inputPassword"
 		 class="form-control"
 		 placeholder="Password"
-		 ng-model="userCtrl.userData.password">
+		 ng-model="userPanelCtrl.userData.password">
 	</div>
 
 	<div class="form-group">
@@ -36,7 +36,7 @@
 		 placeholder="Password Confirmation">
 	</div>
 	
-	<button class="btn btn-lg btn-primary " type="submit" ng-click="userCtrl.createUser()">
+	<button class="btn btn-lg btn-primary " type="submit" ng-click="userPanelCtrl.createUser()">
 	  Creer le praticien
 	</button>
 	
@@ -71,14 +71,22 @@
 	    <td>
 	      <span ng-repeat="item in user.profile.module" class="label label-default">
 		{{item.name}}
-		<a type="checkbox" class="btn glyphicon glyphicon-remove" ng-click="userPanelCtrl.removeModule(user.login, item.name)"></a>
+		<a type="checkbox" class="btn glyphicon glyphicon-remove"
+		   ng-click="userPanelCtrl.removeModuleFromUser(user._id, item.name)">
+		</a>
 	      </span>
 	      <div class="btn-group">
-		<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<button type="button" class="btn btn-warning dropdown-toggle"
+			data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">
 		  Ajouter <span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu">
-		  <li ng-repeat="mod in userPanelCtrl.listModules" ><a href="" ng-click="userPanelCtrl.addModuleToUser(user._id, mod.name)">{{mod.name}}</a></li>
+		  <li ng-repeat="mod in userPanelCtrl.listModules" >
+		    <a href="" ng-click="userPanelCtrl.addModuleToUser(user._id, mod.name)">
+		      {{mod.name}}
+		    </a>
+		  </li>
 		</ul>
 	      </div>
 	    </td>

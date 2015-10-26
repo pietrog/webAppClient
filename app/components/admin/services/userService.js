@@ -9,7 +9,8 @@
 		create: createUser,
 		get: getUser,
 		delete: deleteUser,
-		addModuleToUser: addModuleToUser
+		addModuleToUser: addModuleToUser,
+		deleteModuleFromUser: deleteModuleFromUser
 	    };
 	    
 	    return userFactory;
@@ -25,9 +26,13 @@
 	    function deleteUser(id){
 		return $http.delete('/users/user/' + id);
 	    }
-	    function addModuleToUser(userID, modulesName){
-		var data = { id: userID, modules: modulesName };
+	    function addModuleToUser(userID, modName){
+		var data = { id: userID, module: modName };
 		return $http.patch('/users/updateUserModules', data);
+	    }
+	    function deleteModuleFromUser(userID, modName){
+		var data = { id: userID, module: modName };
+		return $http.patch('/users/deleteUserModule', data);
 	    }
 
 	});
