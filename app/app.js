@@ -19,6 +19,7 @@
 	localStorageServiceProvider.setPrefix('parap');
 	localStorageServiceProvider.setStorageType('sessionStorage');
 
+	//add interceptor for authentication management
 	$httpProvider.interceptors.push('AuthenticationInterceptorFactory');
 
 	$stateProvider
@@ -28,7 +29,9 @@
 		views: {
 		    "header": { templateUrl: "views/header.html" },
 		    "footer": { templateUrl: "views/footer.html" },
-		    "infobar": { templateUrl: "views/infobar.html", controller: "ParapCtrl", controllerAs: "ctrl" }
+		    "infobar": { templateUrl: "views/infobar.html",
+				 controller: "ParapCtrl",
+				 controllerAs: "ctrl" }
 		}
 	    });
     }

@@ -6,9 +6,6 @@
 
 
 
-
-    
-
     //ParapCtrl.$inject = ['$window', 'LocalStorageModule'];
     function ParapCtrl($rootScope,
 		       $http,
@@ -21,13 +18,15 @@
 		      ){
 	var vm = this;
 	vm.messages = [];
-	vm.isAuthenticated ;
-	vm.userAuthenticated;
 	
 	vm.checkModuleAccess = function(moduleName){
-	    if (vm.isAuthenticated && vm.userAuthenticated != null){
-		if (vm.userAuthenticated.profil.module.indexOf(moduleName) != -1)
-		    return true;		
+	    if (UserAuthFactory.isAuthenticated()){
+		if (UserAuthFactory.getUserData.profile.module){
+		    UserAuthFactory.getUserData.profile.module.forEach(function(curr, idx, array){
+			if (curr.name == moduleName)
+			    return true;
+		    })
+		}
 	    }
 	    return false;
 	}
@@ -36,31 +35,22 @@
 	UserAuthFactory.isConnected().then(
 	    function(res){
 		$rootScope.$broadcast('information', "user connected ! "+ res);
-		$rootScope.$broadcast('authenticationSuccess');
-		vm.isAuthenticated = false;
 	    },
 	    function(err){
 		$rootScope.$broadcast('error', "user not connected ! "+ err);
 	    }
 	);
 	
-	//vm.logout = AuthenticationFactory.logout();
-	vm.logout = function(){
-	    if (vm.isAuthenticated)
-		AuthenticationFactory.logout();
-	}
-	
+	vm.logout = AuthenticationFactory.logout();
+
 	$rootScope.$on(MESSAGES_AUTH_CST.authSuccess, function(event, arg){
-	    vm.isAuthenticated = true;
-	    vm.userAuthenticated = arg;
-	    vm.messages.push({ class: "alert alert-success", event: "Utilisateur " + arg });
+	    vm.messages.push({ class: "alert alert-success", event: arg.name + " est maintenant connecte" });
 	});
-		       
-	$rootScope.$on(MESSAGES_AUTH_CST.authLogOut, function(event, arg){
-	    vm.isAuthenticated = false;
-	    vm.userAuthenticated;
+	$rootScope.$on(MESSAGES_AUTH_CST.authFail, function(event, arg){
+	    vm.messages.push({ class: "alert alert-success", event: "Echec de connection" });
 	});
-	
+
+
 	$rootScope
 	    .$on('information', function(event, arg){
 		vm.messages.push({ class: "alert alert-success", event: arg });

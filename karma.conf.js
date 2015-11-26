@@ -5,9 +5,10 @@ module.exports = function(config){
 	
 	files : [
 	    'app/bower_components/angular/angular.js',
-	    'app/bower_components/angular-route/angular-route.js',
+	    'app/bower_components/angular-ui-router/release/angular-ui-router.js',
 	    'app/bower_components/angular-mocks/angular-mocks.js',
 	    'app/bower_components/js/angular-local-storage.js',
+	    'app/*.js',
 	    'app/components/home/home.js',
 	    'app/components/user/user.js',
 	    'app/components/patient/patient.js',
