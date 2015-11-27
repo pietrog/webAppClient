@@ -17,7 +17,7 @@
     function config($stateProvider, $urlRouterProvider, $httpProvider, localStorageServiceProvider ){
 	$urlRouterProvider.otherwise("/home");
 	localStorageServiceProvider.setPrefix('parap');
-	localStorageServiceProvider.setStorageType('sessionStorage');
+	localStorageServiceProvider.setStorageType('windowStorage');
 
 	//add interceptor for authentication management
 	$httpProvider.interceptors.push('AuthenticationInterceptorFactory');
@@ -27,7 +27,10 @@
 		url: '',
 		abstract: true,
 		views: {
-		    "header": { templateUrl: "views/header.html" },
+		    "header": { templateUrl: "views/header.html",
+				controller: "UserLoginCtrl",
+				controllerAs: "loginCtrl"
+			      },
 		    "footer": { templateUrl: "views/footer.html" },
 		    "infobar": { templateUrl: "views/infobar.html",
 				 controller: "ParapCtrl",

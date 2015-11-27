@@ -10,7 +10,7 @@
 	    class="btn navbar-btn btn-default"
 	    aria-label="Left Align"
 	    ui-sref="root.patient"
-	    ng-show="parapctrl.checkModuleAccess('patient')"
+	    ng-show="loginCtrl.checkModuleAccess('patient')"
 	    >
       <span class="glyphicon " aria-hidden="true">Module de base</span>
     </button>
@@ -21,13 +21,13 @@
 	  <span class="glyphicon glyphicon-th-large">-Console Admin </span> 
 	</a>
       </li>
-      <li ng-show="!parapctrl.isAuthenticated">
+      <li ng-show="!loginCtrl.userAuth.isAuthenticated()">
 	<a ui-sref="root.login">
 	  <span class="glyphicon glyphicon-log-in">-Login</span> 
 	</a>
       </li>
-      <li ng-show="parapctrl.isAuthenticated" >
-	<a ui-sref="root.logout" ng-click="parapctrl.logout()">
+      <li ng-show="loginCtrl.userAuth.isAuthenticated()" >
+	<a ui-sref="root.logout" ng-click="loginCtrl.logout()">
 	  <span class="glyphicon glyphicon-log-out">Logout {{parapctrl.name}}</span> 
 	</a>
       </li>

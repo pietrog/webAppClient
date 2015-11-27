@@ -26,8 +26,8 @@
 		    if (res.status == 200){
 			var userData = {
 			    name: credentials.name,
-			    //profile: res.data.profile,
-			    profile: { module: ["patient"] },
+			    profile: res.data.profile,
+			    //profile: { module: ["patient"] },
 			    lastAccess: res.data.lastAccess
 			};
 			localStorageService.set(USER_AUTH_CST.token, res.data.token);
@@ -39,10 +39,11 @@
 	};
 	
 	function logout(){
+	    $rootScope.$broadcast(MESSAGES_AUTH_CST.authLogOut, UserAuthFactory.getUserData().name);
 	    UserAuthFactory.connectUser(false);
 	    localStorageService.remove(USER_AUTH_CST.token);
 	    localStorageService.remove(USER_AUTH_CST.userData);
-	    $rootScope.$broadcast(MESSAGES_AUTH_CST.authLogOut);
+
 	};
 
     };

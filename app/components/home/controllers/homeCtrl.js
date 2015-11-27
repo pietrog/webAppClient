@@ -8,9 +8,10 @@
 
     //HomeCtrl.$inject = ['$state', 'testService'];
 
-    function HomeCtrl(){
+    function HomeCtrl(UserAuthFactory){
 	var vm = this;
-	
+
+	vm.toDisplay = UserAuthFactory.getToken();
 	//$state.go('home.acceuil');
 	
     }

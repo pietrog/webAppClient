@@ -8,7 +8,7 @@
     function UserAuthFactory($q, $location, USER_AUTH_CST, localStorageService){
 
 	var UserAuth = {
-	    _isAuthenticated: false,
+	    authenticated: getToken() != null ? true : false,
 	    isAuthenticated: isUserAuthenticated,
 	    connectUser: userConnected,
 	    isConnected: checkIsConnected,
@@ -24,16 +24,16 @@
 	 */
 	function userConnected(value){
 	    if (value)
-		UserAuth._isAuthenticated = true;
+		UserAuth.authenticated = true;
 	    else
-		UserAuth._isAuthenticated = false;
+		UserAuth.authenticated = false;
 	}
 
 	/**
 	 * Getter for user connection
 	 */
 	function isUserAuthenticated(){
-	    return UserAuth._isAuthenticated;
+	    return UserAuth.authenticated;
 	}
 	/**
 	 * Return the token used for backend connection from the connected user
@@ -54,7 +54,7 @@
 	    }
 	    else{
 		defered.resolve("access granted !");
-		UserAuth.isAuthenticated = true;
+		UserAuth.authenticated = true;
 	    }
 	    
 	    return defered.promise;
@@ -64,7 +64,7 @@
 	 * Return the user data json array of the connected user
 	 */
 	function getUsrData(){
-	    if (UserAuth.isAuthenticated == false)
+	    if (UserAuth.authenticated == false)
 		return null;
 
 	    return localStorageService.get(USER_AUTH_CST.userData);

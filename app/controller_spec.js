@@ -34,10 +34,11 @@ describe ('Base controller', function(){
 	expect(ctrl.messages.length).toBe(0);
     });
 
-    it('should have raise message when a user is connected', function(){
+    //now, the message is raised in LoginCtrl
+    /*it('should have raised a message when a user is connected', function(){
 	authentication.login({ name: "pietro", password: "silvio"});
 	$httpBackend.flush();
 	expect(ctrl.messages.length).toBe(1);
-    });
+    });*/
 
 });
