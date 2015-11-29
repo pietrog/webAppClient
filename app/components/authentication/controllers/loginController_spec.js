@@ -41,12 +41,6 @@ describe('LoginCtrl controller ', function(){
     it('should be disconnected', function(){
 	expect(ctrl.userAuth.getToken()).toBe(null);
 	expect(ctrl.userAuth.isAuthenticated()).toBe(false);
-	ctrl.credentials = {name: "pietro", password: "silvio"};
-	ctrl.login();
-	$httpBackend.flush();
-
-	expect(ctrl.userAuth.isAuthenticated()).toBe(true);
-	expect(ctrl.userAuth.getUserData().name).toBe('pietro');
     });
 
     it('should have the patient module', function(){
@@ -57,6 +51,16 @@ describe('LoginCtrl controller ', function(){
 	expect(ctrl.checkModuleAccess('patient')).toBe(true);
 	expect(ctrl.checkModuleAccess('science')).toBe(false);
 	expect(ctrl.checkModuleAccess('sciences')).toBe(true);
+    });
+
+    it('should connect with credentials and return right informations', function(){
+	ctrl.credentials = {name: "pietro", password: "silvio"};
+	ctrl.login();
+	$httpBackend.flush();
+
+	expect(ctrl.userAuth.isAuthenticated()).toBe(true);
+	expect(ctrl.userAuth.getUserName()).toBe('pietro');
+	
     });
     
 });

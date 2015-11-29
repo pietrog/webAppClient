@@ -39,7 +39,7 @@
 	};
 	
 	function logout(){
-	    $rootScope.$broadcast(MESSAGES_AUTH_CST.authLogOut, UserAuthFactory.getUserData().name);
+	    $rootScope.$broadcast(MESSAGES_AUTH_CST.authLogOut, UserAuthFactory.getUserName());
 	    UserAuthFactory.connectUser(false);
 	    localStorageService.remove(USER_AUTH_CST.token);
 	    localStorageService.remove(USER_AUTH_CST.userData);

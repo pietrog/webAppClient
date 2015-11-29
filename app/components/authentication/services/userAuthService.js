@@ -13,6 +13,7 @@
 	    connectUser: userConnected,
 	    isConnected: checkIsConnected,
 	    getToken: getToken,
+	    getUserName: getUserName,
 	    getUserData: getUsrData
 	};
 
@@ -41,6 +42,13 @@
 	
 	function getToken(){
 	    return localStorageService.get(USER_AUTH_CST.token);
+	}
+
+	function getUserName(){
+	    if (UserAuth.authenticated && UserAuth.getUserData())
+		return UserAuth.getUserData().name;
+
+	    return null;
 	}
 	
 	function checkIsConnected(){
