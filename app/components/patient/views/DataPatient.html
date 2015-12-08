@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="col-md-6">
+  <h3>{{dataPatientCtrl.current.firstname}} {{dataPatientCtrl.current.lastname}}</h3>
+
+
+    <form name="myform" class="my-form">
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.firstname">Prenom</span>
+      <span>{{dataPatientCtrl.current.firstname}}</span>
+    </div>
+    
+    <div class="form-group">
+      
+      <span class="input-group-addon" id="patient.lastname">Nom de famille</span>
+      <span>{{dataPatientCtrl.current.lastname}}</span>
+    </div>
+
+    <div class="form-group">
+      
+      <span class="input-group-addon" id="patient.birthday">Date de naissance</span>
+      <span>{{dataPatientCtrl.current.birthdate}}</span>      
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.email">E-mail</span>
+      <span>{{dataPatientCtrl.current.email}}</span>      
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.address">Adresse</span>
+      <span>{{dataPatientCtrl.current.address}}</span>      
+    </div>
+    
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.phone">Numéro de telephone</span>
+      <span>{{dataPatientCtrl.current.phone}}</span>      
+    </div>
+
+    <div class="form-group">
+      <span class="input-group-addon" id="patient.notes">Notes</span>
+    </div>
+
+  </form>
+
+  
+
+    ID {{dataPatientCtrl.current | json}}
+  </div>
+</div>

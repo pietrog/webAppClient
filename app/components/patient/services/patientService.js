@@ -7,7 +7,8 @@
 		create: createPatient,
 		getAll: getAllPatients,
 		remove: removePatient,
-		update: updatePatient
+		update: updatePatient,
+		getByID: getPatient,
 	    };
 
 	    return fact;
@@ -27,6 +28,10 @@
 
 	    function updatePatient(data){
 		return $http.patch('/patients/update', data);
+	    }
+
+	    function getPatient(id){
+		return $http.get('/patients/patient/'+id);
 	    }
 	    
 	});

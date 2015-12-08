@@ -1,24 +1,33 @@
 <div class="container">
 
-  <div class="well" ng-show="patientCtrl.patients[0]">
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="item in patientCtrl.patients">
-	<span>{{item.firstname}}</span>
-	<span>{{item.lastname}}</span>
-	<span>{{item.email}}</span>
-	<span>{{item.adress}}</span>
-	<span>{{item.phone}}</span>
-	<span>{{item.birthday}}</span>
-	<div class="checkbox">
-	  <label>
-	    <input type="checkbox" ng-click="patientCtrl.deletePatient(item._id)">
-	  </label>
-	</div>
-      </li>
-    </ul>
-  </div>
+  <table class="table table-hover">
+    <thead>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>E-Mail</th>
+      <th>Telephone</th>
+      <th>Supprimer fiche</th>
+    </thead>
 
-  <div class="well" ng-show="!patientCtrl.patients[0]">
+    <tbody>
+      <tr ng-repeat="item in patientCtrl.patients" >
+	<td><a ui-sref="root.patient.patient({id: item._id})">{{item.lastname}}</a></td>
+	<td>{{item.firstname}}</td>
+	<td>{{item.email}}</td>
+	<td>{{item.phone}}</td>
+	<td>
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox" ng-click="patientCtrl.deletePatient(item._id)">
+	    </label>
+	  </div>
+	</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="well" ng-show="!patientCtrl.auth.isAuthenticated()">
     Ressource destinée aux practiciens.
     <a ui-sref="root.user-login">Veuillez vous authentifier</a>
   </div>

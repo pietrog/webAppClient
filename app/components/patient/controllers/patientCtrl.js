@@ -7,19 +7,17 @@
 
     //PatientCtrl.$inject = ['$state'];
 
-    function PatientCtrl($rootScope, $state, $location, PatientFactory, AuthenticationFactory){
+    function PatientCtrl(PatientFactory, UserAuthFactory){
 	var vm = this;
 
 	//$state.go('root.patient.list');
 
 	vm.patients = {};
+	vm.auth = UserAuthFactory;
 
 	PatientFactory.getAll().then(
 	    function(response){
 		vm.patients = response.data.data;
-	    },
-	    function(response){
-		vm.patients = {};
 	    }
 	);
 

@@ -29,7 +29,13 @@
 		controller: "PatientCtrl",
 		controllerAs: "patientCtrl",
 		//resolve: checkIsConnected
-	    });
+	    })
+	    .state('root.patient.patient', {
+		url: "/patient/:id",
+		templateUrl: "components/patient/views/DataPatient.html",
+		controller: "DataPatientCtrl",
+		controllerAs: "dataPatientCtrl"
+	    })
     }
 
 
