@@ -6,14 +6,25 @@
     <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.home">
       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
     </button>
+
     <button type="button"
 	    class="btn navbar-btn btn-default"
 	    aria-label="Left Align"
 	    ui-sref="root.patient"
 	    ng-show="loginCtrl.checkModuleAccess('patient')"
 	    >
-      <span class="glyphicon " aria-hidden="true">Module de base</span>
+      <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
     </button>
+
+    <button type="button"
+	    class="btn navbar-btn btn-default"
+	    aria-label="Left Align"
+	    ui-sref="root.psychomotricite"
+	    ng-show="loginCtrl.checkModuleAccess('psychomotricite')"
+	    >
+      <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+    </button>
+
     
     <ul class="nav navbar-nav navbar-right">
       <li>

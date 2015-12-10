@@ -7,6 +7,7 @@
 			     'parap.home',
 			     'parap.patient',
 			     'AdminConsole',
+			     'psychomotricite',
 			     'LocalStorageModule']);
 
     angular.module('parap')
