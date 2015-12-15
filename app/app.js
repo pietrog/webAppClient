@@ -28,16 +28,22 @@
 		url: '',
 		abstract: true,
 		views: {
-		    "header": { templateUrl: "views/header.html",
-				controller: "UserLoginCtrl",
-				controllerAs: "loginCtrl"
-			      },
+		    "header": {
+			templateUrl: "views/header.html",
+			controller: "UserLoginCtrl",
+			controllerAs: "loginCtrl",
+		    },
+		    "loginPart":{
+			templateUrl: "components/authentication/views/login.html",
+			controller: "UserLoginCtrl",
+			controllerAs: "loginCtrl"
+		    },
 		    "footer": { templateUrl: "views/footer.html" },
 		    "infobar": { templateUrl: "views/infobar.html",
 				 controller: "ParapCtrl",
 				 controllerAs: "ctrl" }
 		}
-	    });
+	    })
     }
 
 })();
