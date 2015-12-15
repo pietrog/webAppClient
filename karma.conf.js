@@ -12,6 +12,7 @@ module.exports = function(config){
 	    'app/components/home/home.js',
 	    'app/components/user/user.js',
 	    'app/components/patient/patient.js',
+	    'app/components/psychologue/psychologue.js',
 	    'app/components/**/*.js',
 
 	],
