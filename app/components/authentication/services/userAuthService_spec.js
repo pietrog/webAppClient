@@ -17,7 +17,12 @@ describe('User Authentication Service Tests', function(){
 	//configure the httpBackend
 	$httpBackend = $injector.get('$httpBackend');
 	$httpBackend.when('POST', "/authenticate", { name: "pietro", password: "silvio"})
-	    .respond({ success : true, message : "Authentication successed ! ", token: "XXX123"});
+	    .respond({ success : true,
+		       data: {
+			   message : "Authentication successed ! ",
+			   token: "XXX123"
+		       }
+		     });
 
     }));
 

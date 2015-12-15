@@ -26,11 +26,11 @@
 		    if (res.status == 200){
 			var userData = {
 			    name: credentials.name,
-			    profile: res.data.profile,
+			    profile: res.data.data.profile,
 			    //profile: { module: ["patient"] },
-			    lastAccess: res.data.lastAccess
+			    lastAccess: res.data.data.lastAccess
 			};
-			localStorageService.set(USER_AUTH_CST.token, res.data.token);
+			localStorageService.set(USER_AUTH_CST.token, res.data.data.token);
 			localStorageService.set(USER_AUTH_CST.userData, userData);
 			UserAuthFactory.connectUser(true);
 		    }

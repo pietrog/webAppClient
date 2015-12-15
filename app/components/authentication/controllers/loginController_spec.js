@@ -22,13 +22,15 @@ describe('LoginCtrl controller ', function(){
 	$httpBackend.when('POST', "/authenticate", { name: "pietro", password: "silvio"})
 	    .respond(
 		{ success : true,
-		  message : "Authentication successed ! ",
-		  token: "XXX123",
-		  profile: {
-		      module: [
-			  { name: 'patient' },
-			  { name: 'sciences'}
-		      ]
+		  data:{
+		      message : "Authentication successed ! ",
+		      token: "XXX123",
+		      profile: {
+			  module: [
+			      { name: 'patient' },
+			      { name: 'sciences'}
+			  ]
+		      }
 		  }
 		}
 	    );

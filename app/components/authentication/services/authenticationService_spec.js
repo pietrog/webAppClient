@@ -21,9 +21,18 @@ describe('Authentication service tests' , function(){
 
 	$httpBackend = $injector.get('$httpBackend');
 	$httpBackend.when('POST', "/authenticate", { name: "pietro", password: "silvio"})
-	    .respond({ success : true, message : "Authentication successed ! ", token: "XXX123"});
+	    .respond({ success : true,
+		       data: {
+			   message : "Authentication successed ! ",
+			   token: "XXX123"}
+		     }
+		    );
 	$httpBackend.when('POST', "/authenticate", { name: "pietrus", password: "silvio"})
-	    .respond({ success : false, message: 'User not found !!'});
+	    .respond({ success : false,
+		       data: {
+			   message: 'User not found !!'
+		       }
+		     });
     }));
 
     //Check that we never have a pending http request 
@@ -71,7 +80,7 @@ describe('Authentication service tests' , function(){
 	);
 	$httpBackend.flush();
 	expect(result.success).toBe(false);
-	expect(result.message).toMatch("not found");
+	expect(result.data.message).toMatch("not found");
     });
 
 });

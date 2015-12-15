@@ -11,7 +11,7 @@
 	vm.newModule = {};
 	
 	vm.createModule = function(){
-	    vm.listModules = [{name: "coucou", description: "blabla", isActive: false}];
+	    vm.listModules = [];
 	    if (vm.newModule){
 		ModuleFactory.create(vm.newModule)
 		    .then(function(response){
@@ -26,14 +26,14 @@
 	    if (id){
 		ModuleFactory.delete(id).then(
 		    function(response){
-			vm.result = response;
+			vm.result = response.data;
 		    });
 	    }
 	}
 
 	ModuleFactory.get().then(
 	    function(response){
-		vm.listModules = response.data;
+		vm.listModules = response.data.data;
 		vm.result = response;
 	    });
 

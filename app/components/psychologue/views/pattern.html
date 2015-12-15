@@ -1,0 +1,59 @@
+<div class="well">
+  <div class="row">
+
+    <!--div class="col-md-6">
+      <div class="panel panel-primary">
+	<div class="panel-heading">
+	  Listes d'elements dynamiques
+	</div>
+	<div class="panel-body">
+	  
+
+	  <table>
+	    <tr ng-repeat="item in patternctrl.lists">
+	      <td>
+		<button class="btn btn-primary glyphicon glyphicon-time"></button>
+	      </td>
+	      <td draggable="true">
+		<select draggable="true" class=" selectWidth">
+		  <option ng-repeat="opt in item">{{opt}}</option>
+		</select>
+	      </td>
+	    </tr>
+	  </table>
+
+	  
+	  <br/>
+	  <hr/>
+
+	  <button class="btn btn-primary glyphicon glyphicon-plus" ng-click="patternctrl.addList()"></button>
+	</div>
+      </div>
+    </div-->
+    
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+	<div class="panel-heading">
+	  Edition du template
+	</div>
+	<div class="panel-body">
+
+	  <div contentEditable="true" rows="12">
+	    Voic le resume qui decrit la personne etudiee. Cela bla bla bla.
+	    
+	    Et il vint a renaitre.
+	  </div>
+	  
+	</div>
+
+	<div class="panel-body">
+	  <button class="btn btn-primary glyphicon glyphicon-save" ng-click="">Sauvegarder</button>
+	</div>
+	
+      </div>
+      
+    </div>
+    
+  </div>
+</div>
+

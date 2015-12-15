@@ -14,13 +14,9 @@
 	
 	User.get().then(
 	    function(response){
-		vm.users = response.data;
-		vm.result = response.data;
+		vm.users = response.data.data;
+		//vm.result = response.data;
 	    });
-
-	ModuleFactory.get().then(function(response){
-	    vm.listModules = response.data;
-	});
 	
 	vm.createUser = function(){
 	    vm.result = "ok"
@@ -31,8 +27,7 @@
 			$rootScope.$broadcast('information', 'Utilisateur ajouté');
 			User.get().then(
 			    function(response){
-				vm.users = response.data;
-				vm.result = response;
+				vm.users = response.data.data;
 			    });
 			
 		    },
@@ -47,12 +42,12 @@
 	    if (userID){
 		User.delete(userID).then(
 		    function(response){
-			vm.users = response.data;
-			$rootScope.$broadcast('information', 'Utilisateur supprimé'+response.data);
+			vm.users = response.data.data;
+			$rootScope.$broadcast('information', 'Utilisateur supprimé'+response.data.data);
 		    },
 		    function(response){
-			vm.result = response.data;
-			$rootScope.$broadcast('error', 'Echec de suppression: '+response.data);
+			vm.result = response.data.data;
+			$rootScope.$broadcast('error', 'Echec de suppression: '+response.data.data);
 		    });
 	    }
 	};

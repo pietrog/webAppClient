@@ -3,14 +3,14 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Parap!</a>
     </div>
-    <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.home">
+    <button type="button" class="btn navbar-btn btn-default" aria-label="Left Align" ui-sref="root.home.acceuil">
       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
     </button>
 
     <button type="button"
 	    class="btn navbar-btn btn-default"
 	    aria-label="Left Align"
-	    ui-sref="root.patient"
+	    ui-sref="root.patient.list"
 	    ng-show="loginCtrl.checkModuleAccess('patient')"
 	    >
       <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
@@ -19,8 +19,8 @@
     <button type="button"
 	    class="btn navbar-btn btn-default"
 	    aria-label="Left Align"
-	    ui-sref="root.psychomotricite"
-	    ng-show="loginCtrl.checkModuleAccess('psychomotricite')"
+	    ui-sref="root.psychologue"
+	    ng-show="loginCtrl.checkModuleAccess('psychologue')"
 	    >
       <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
     </button>

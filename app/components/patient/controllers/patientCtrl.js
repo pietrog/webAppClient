@@ -7,7 +7,7 @@
 
     //PatientCtrl.$inject = ['$state'];
 
-    function PatientCtrl(PatientFactory, UserAuthFactory){
+    function PatientCtrl($state, PatientFactory, UserAuthFactory){
 	var vm = this;
 
 	//$state.go('root.patient.list');
@@ -27,6 +27,11 @@
 		$rootScope.$broadcast('information', 'Patient supprimé');
 	    })
 	};
+
+	vm.test = function(id){
+	    vm.result = id;
+	    $state.go('root.patient.patient', {id:  id });
+	}
     }
 
 })();

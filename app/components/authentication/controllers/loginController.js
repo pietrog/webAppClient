@@ -20,7 +20,7 @@
 	    AuthenticationFactory.login(vm.credentials).then(
 		function(response){
 		    $rootScope.$broadcast(MESSAGES_AUTH_CST.authSuccess, vm.credentials);
-		    vm.result = response;
+		    vm.result = response.data;
 		},
 		function(response){
 		    $rootScope.$broadcast(MESSAGES_AUTH_CST.authFail, vm.credentials);
