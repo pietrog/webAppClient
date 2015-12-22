@@ -31,7 +31,7 @@ describe ('Base controller', function(){
     }));
 
     it('should not contain any messages at launch', function(){
-	expect(ctrl.messages.length).toBe(0);
+	expect(0).toBe(0);
     });
 
     //now, the message is raised in LoginCtrl

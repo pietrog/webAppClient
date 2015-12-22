@@ -6,7 +6,7 @@
 
     function DataPatientCtrl($stateParams, PatientFactory){
 	var vm = this;
-	
+	vm.ctname = "DataPatientCtrl";	
 	PatientFactory.getByID($stateParams.id).then(
 	    function(response){
 		vm.current = response.data.data;

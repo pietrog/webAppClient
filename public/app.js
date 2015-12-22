@@ -30,8 +30,8 @@
 		views: {
 		    "header": {
 			templateUrl: "views/header.html",
-			controller: "UserLoginCtrl",
-			controllerAs: "loginCtrl",
+			//controller: "UserLoginCtrl",
+			//controllerAs: "loginCtrl",
 		    },
 		    "loginPart":{
 			templateUrl: "components/authentication/views/login.html",

@@ -8,7 +8,7 @@
 
     function CreatePatientCtrl($rootScope, PatientFactory){
 	var vm = this;
-
+	vm.ctname = "CreatePatientCtrl";
 
 	vm.patient = {
 	};
@@ -17,7 +17,9 @@
 	    if (vm.patient.firstname){
 		PatientFactory.create(vm.patient).then(
 		    function(response){
-			$rootScope.$broadcast('information', 'Patient ' + response.success + ' créé.');
+			vm.result = response;
+			if (response.data.success)
+			    $rootScope.$broadcast('information', 'Patient ' + response.success + ' créé.');
 		    },
 		    function(err){
 			$rootScope.$broadcast('error', 'Echec de la création du patient: ' + err.data);

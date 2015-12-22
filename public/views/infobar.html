@@ -2,8 +2,12 @@
   <ul class="sidebar-nav">
     <li class="sidebar-brand" >
       Infos
+      <button type="button" class="btn btn-default" ng-click="ctrl.infobar.clearMessages()">
+	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+
     </li>
-    <li ng-repeat="item in ctrl.messages" >
+    <li ng-repeat="item in ctrl.infobar.messageArray" >
       <div ng-class="item.class" role="alert">{{item.event}}</div>
     </li>
 

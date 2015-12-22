@@ -17,8 +17,10 @@ router.post('/authenticate', function(req, res){
     }, function(err, user){
 	if (err)
 	    httphandler.answerJSonError(res, err.toString());
-	else if (!user)
+	else if (!user){
+	    console.log('Utilisateur ' + req.body.name + ' inexistant');
 	    httphandler.answerJSonWithHTTPCode(res, 401, 'Utilisateur ' + req.body.name + ' inexistant');
+	}
 	else{
 	    if (user.password != req.body.password)
 		httphandler.answerJSonWithHTTPCode(res, 401, 'Authentication failed. Wrong password !');
@@ -29,8 +31,8 @@ router.post('/authenticate', function(req, res){
 		    module: user.profile.module
 		};
 
-		var token = jwt.sign(profile, App.app.get('superSecret'), { expiresIn : 3600 });
-
+		var token = jwt.sign(profile, App.app.get('superSecret'), { expiresIn : 10000 });
+		console.log("CONNEXION "+req.body.name);
 		httphandler.answerJSonSuccess(res, { success : true,
 						     data : "Authentication successed ! ",
 						     token: token,

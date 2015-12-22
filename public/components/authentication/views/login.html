@@ -1,5 +1,5 @@
 <!--login modal-->
-<div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     
     <div class="modal-content">
@@ -18,7 +18,7 @@
 	    <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="loginCtrl.credentials.password">
 	  </div>
 	  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	  <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="loginCtrl.login()">S'identifier</button>	  
+	  <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="loginCtrl.auth.login(loginCtrl.credentials)">S'identifier</button>	  
 	</form>
       </div>
       <!--div class="modal-footer">

@@ -9,6 +9,7 @@ module.exports = function(config){
 	    'public/bower_components/angular-mocks/angular-mocks.js',
 	    'public/bower_components/js/angular-local-storage.js',
 	    'public/*.js',
+	    'public/services/*.js',
 	    'public/components/home/home.js',
 	    'public/components/user/user.js',
 	    'public/components/patient/patient.js',

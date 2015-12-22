@@ -1,0 +1,10 @@
+All issues to fix
+[server]
+
+
+[client]
+- HIGH   16/12/15: lorsque l'on est connecte, faire un check prealable au serveur pour savoir si le token est toujours valide, si non, eviter de tout perdre le formulaire
+- MEDIUM 16/12/15: JSON vulnerability to fix
+- MEDIUM 16/12/15: XSRF vulnerability to fix
+- LOW  	 16/12/15: dialogue de login, on doit avoir le focus sur l'input de l'email
+

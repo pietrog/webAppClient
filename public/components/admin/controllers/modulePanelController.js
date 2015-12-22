@@ -6,7 +6,7 @@
 
     function UserCtrl($rootScope, ModuleFactory){
 	var vm = this;
-
+	vm.ctname = "ModulePanelCtrl";
 	vm.listModules = [];
 	vm.newModule = {};
 	

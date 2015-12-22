@@ -7,7 +7,7 @@
 
     function PatternCtrl(){
 	var vm = this;
-
+	vm.ctname = "PatternCtrl";	
 	vm.lists = [];
 	
 	vm.addList = function(){

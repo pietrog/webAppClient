@@ -7,9 +7,9 @@
 
     //PatientCtrl.$inject = ['$state'];
 
-    function PatientCtrl($state, PatientFactory, UserAuthFactory){
+    function PatientCtrl($state, $rootScope, PatientFactory, UserAuthFactory){
 	var vm = this;
-
+	vm.ctname = "PatientCtrl";	
 	//$state.go('root.patient.list');
 
 	vm.patients = {};
@@ -32,6 +32,8 @@
 	    vm.result = id;
 	    $state.go('root.patient.patient', {id:  id });
 	}
+
+	vm.obj = $rootScope.obj;
     }
 
 })();

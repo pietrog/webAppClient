@@ -27,6 +27,10 @@
     </tbody>
   </table>
 
+  <div>
+    {{patientCtrl.obj | json}}
+  </div>
+
   <div class="well" ng-show="!patientCtrl.auth.isAuthenticated()">
     Ressource destinée aux practiciens.
     <a ui-sref="root.user-login">Veuillez vous authentifier</a>

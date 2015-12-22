@@ -10,7 +10,8 @@
 	.constant('MESSAGES_AUTH_CST', {
 	    authSuccess: 'authenticationSuccess',
 	    authFail: 'authenticationFailure',
-	    authLogOut: 'loggedOut'
+	    authLogOut: 'loggedOut',
+	    authExpired: 'authExpired'
 	})
     
 })();

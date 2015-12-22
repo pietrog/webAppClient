@@ -14,7 +14,8 @@
 	    isConnected: checkIsConnected,
 	    getToken: getToken,
 	    getUserName: getUserName,
-	    getUserData: getUsrData
+	    getUserData: getUsrData,
+	    checkModuleAccess: checkAccess
 	};
 
 	return UserAuth;
@@ -76,6 +77,19 @@
 		return null;
 
 	    return localStorageService.get(USER_AUTH_CST.userData);
+	}
+
+	/**
+	 * check if connected user can access to modname
+	 */
+	function checkAccess(modName){
+	    if (UserAuth.authenticated)
+		for (var i = 0; i<UserAuth.getUserData().profile.module.length; ++i)
+		    if (UserAuth.getUserData().profile.module[i].name == modName)
+			return true;
+
+
+	    return false;
 	}
 
     }

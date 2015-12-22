@@ -6,7 +6,7 @@
 
     function UserCtrl($rootScope, User, ModuleFactory){
 	var vm = this;
-
+	vm.ctname = "UserPanelCtrl";
 	vm.typeUsers = ["admin", "patient", "praticien"];
 	vm.users = {};
 	vm.userData = {};

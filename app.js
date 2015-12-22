@@ -75,7 +75,7 @@ App.app.use(function(req, res, next){
 	jwt.verify(token, App.app.get('superSecret'), function(err, decoded){
 	    if (err){
 		console.log("error token: "+ err.toString());
-		return res.json({success: false, message: 'Failed to authenticate token'});
+		return res.status(401).json({success: false, message: 'Failed to authenticate token'});
 	    }
 	    else{
 		//console.log('OKAYYY TOKEN !!' + decoded.toString());
@@ -86,7 +86,7 @@ App.app.use(function(req, res, next){
     }
     else{
 
-	return res.status(403).send("Ressource non autorisée");
+	return res.status(401).send("Ressource non autorisée");
     }
 });
 
