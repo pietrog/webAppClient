@@ -1,0 +1,6 @@
+
+"npm install" pour mettre en place tous les composants
+lancer la base de donnée mongodb
+lancer les tests unitaires angular: "npm test"
+lancer les tests unitaires nodejs: mocha
+lancer le site: nodemon bin/www
