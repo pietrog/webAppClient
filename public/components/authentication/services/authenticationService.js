@@ -35,7 +35,7 @@
 			UserAuthFactory.connectUser(true);
 			$rootScope.$emit(MESSAGES_AUTH_CST.authSuccess, userData.name);
 		    }
-		    //return res;
+		    return res;
 		})
 	};
 	

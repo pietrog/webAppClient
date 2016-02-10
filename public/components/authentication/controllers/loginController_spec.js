@@ -14,7 +14,7 @@ describe('LoginCtrl controller ', function(){
     beforeEach(inject(function($controller, $injector){
 	ctrl = $controller('UserLoginCtrl');
 	//make sure to be disconnected
-	ctrl.logout();
+	ctrl.auth.logout();
 	authentication = $injector.get('AuthenticationFactory');
 	usrFact = $injector.get('UserAuthFactory');
 	
@@ -41,27 +41,27 @@ describe('LoginCtrl controller ', function(){
 
 
     it('should be disconnected', function(){
-	expect(ctrl.userAuth.getToken()).toBe(null);
-	expect(ctrl.userAuth.isAuthenticated()).toBe(false);
+	expect(ctrl.user.getToken()).toBe(null);
+	expect(ctrl.user.isAuthenticated()).toBe(false);
     });
 
     it('should have the patient module', function(){
-	ctrl.credentials = {name: "pietro", password: "silvio"};
-	ctrl.login();
+	var credentials = {name: "pietro", password: "silvio"};
+	ctrl.auth.login(credentials);
 	$httpBackend.flush();
 
-	expect(ctrl.checkModuleAccess('patient')).toBe(true);
-	expect(ctrl.checkModuleAccess('science')).toBe(false);
-	expect(ctrl.checkModuleAccess('sciences')).toBe(true);
+	expect(ctrl.user.checkModuleAccess('patient')).toBe(true);
+	expect(ctrl.user.checkModuleAccess('science')).toBe(false);
+	expect(ctrl.user.checkModuleAccess('sciences')).toBe(true);
     });
 
     it('should connect with credentials and return right informations', function(){
-	ctrl.credentials = {name: "pietro", password: "silvio"};
-	ctrl.login();
+	var credentials = {name: "pietro", password: "silvio"};
+	ctrl.auth.login(credentials);
 	$httpBackend.flush();
 
-	expect(ctrl.userAuth.isAuthenticated()).toBe(true);
-	expect(ctrl.userAuth.getUserName()).toBe('pietro');
+	expect(ctrl.user.isAuthenticated()).toBe(true);
+	expect(ctrl.user.getUserName()).toBe('pietro');
 	
     });
     
