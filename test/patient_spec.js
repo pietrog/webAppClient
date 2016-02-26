@@ -172,42 +172,110 @@ describe('Patient model ', function(){
 	});
     });
 
-    /*it('should give a list of patients', function(){
-	var patient = new Patient({
-	    firstname: "coucou",
-	    lastname: "herculanum",
-	    phone: "+443456789023",
-	    idpraticien: praticien._id
-	});
+    
+});
 
-	Patient.create(patient, function(err, user){
-	    patient.firstname = "cici";
-	    patient.lastname = 'pompei';
-	    Patient.create(patient, function(err, user){
-		Patient.ge
+describe('Patients and Documents ', function(){
+
+    var patient1 = new Patient({
+	firstname: "herble",
+	lastname: "glouton",
+	email: "rome@it.it",
+	phone: "+443456789023",
+	adress: "3 via flamini, Roma",
+    });
+    var patient2 = new Patient({
+	firstname: "jean",
+	lastname: "valjean",
+	email: "rome@it.it",
+	phone: "+443456789023",
+	adress: "3 via flamini, parios",
+    });
+    var patient3 = new Patient({
+	firstname: "lucie",
+	lastname: "lapluie",
+	email: "lutexe@it.it",
+	phone: "+443456789864",
+	adress: "3 via flamini, U-S",
+    });
+    var user1 = new User({
+	login: "pietrog",
+	password: "brahhh",
+	profile: {
+	    type: "praticien",
+	    module: [{name: "patient"}]
+	}
+    });
+    var user2 = new User({
+	login: "Poulette",
+	password: "brahhh",
+	profile: {
+	    type: "praticien",
+	    module: [{name: "patient"}]
+	}
+    });
+
+
+    before(function(done) {
+	//Another possibility is to check if mongoose.connection.readyState equals 1
+	if (mongoose.connection.db) return done();
+	mongoose.connect('mongodb://localhost/puan_test', function(err){
+	    if (err)
+		throw err;
+	    Patient.remove({}, function(err){
+		if (err)
+		    throw err;
+		User.remove({}, function(err){
+		    if (err)
+			throw err;
+		    User.create(user1, function(err, _user1){
+			if (err)
+			    throw err;
+			expect(_user1.login).to.be("pietrog");
+			User.create(user2, function(err, _user2){
+			    if (err)
+				throw err;
+
+			    patient1.idpraticien = _user1._id;
+			    patient2.idpraticien = _user2._id;
+			    patient3.idpraticien = _user2._id;
+			    Patient.create(patient, function(err, patient1){
+				if (err)
+				    throw err;
+				Patient.create(patient, function(err, patient2){
+				    if (err)
+					throw err;
+				    Patient.create(patient, function(err, patient3){
+					if (err)
+					    throw err;
+					done()
+				    });
+				});
+			    });
+			})
+		    });
+		})
 	    });
 	});
+    })
+	    
 
-    });*/
+    it('should contain 3 patients', function(done){
+	User.find(function(err, users){
+	    if (err)
+		throw err;
+	    
+	    expect(users.length).to.be(2);
+	    
+	    Patient.find(function(err, patients){
+		if (err)
+		    throw err;
 
-
-/*    it('should get only patients related to the praticien', function(){
-	var patient = new Patient({
-	    firstname: "coucou",
-	    lastname: "herculanum",
-	    email: "rome@it.it",
-	    phone: "+443456789023",
-	    adress: "3 via flamini, Roma",
-	    idpraticien: praticien._id
+		expect(patients.length).to.be(3);
+		done();
+	    });
 	});
-	
-    });*/
-    
-    
-    /*after(function(done){
-	User.remove({}).then(function(err){done()});
-    });*/
-    
-    
+    })
+
 });
 
